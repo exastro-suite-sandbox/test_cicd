@@ -1,0 +1,24 @@
+- name: run "echo VAR_STR_1"
+  command: echo {{ VAR_STR_1 }}
+
+- name: run "echo GBL_A"
+  command: echo {{ GBL_A }}
+  
+- name: run "echo GBL_S"
+  command: echo {{ GBL_S }}
+  
+- name: run "echo GBL_S_LB"
+  command: echo {{ GBL_S_LB }}
+  
+- template: src='{{ TPF_gbl }}' dest=/tmp/legacy_gbl.txt
+
+- name: Copy CPF_WDSITA
+  copy:
+    src: "{{ CPF_WDSITA }}"
+    dest: "/tmp/WIN_DirectorySetting_ITA.yml"
+
+- name: fetch WIN_DirectorySetting_ITA
+  fetch:
+    src: "/tmp/WIN_DirectorySetting_ITA.yml"
+    dest: "{{ __parameter_dir__ }}/{{ inventory_hostname }}/OS/WIN_DirectorySetting_ITA.yml"
+    flat: yes

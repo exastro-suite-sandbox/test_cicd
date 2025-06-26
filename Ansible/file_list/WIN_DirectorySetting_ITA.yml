@@ -1,0 +1,92 @@
+---
+VAR_WIN_DirectorySetting_ITA:
+- AccessToString: 'NT AUTHORITY\SYSTEM Allow  FullControl
+
+    BUILTIN\Administrators Allow  FullControl
+
+    BUILTIN\Users Allow  ReadAndExecute, Synchronize
+
+    BUILTIN\Users Allow  AppendData
+
+    BUILTIN\Users Allow  CreateFiles
+
+    CREATOR OWNER Allow  268435456'
+  Action: directory
+  Encrypt: null
+  Name: C:\test
+  Owner: BUILTIN\Administrators
+- AccessToString: null
+  Action: null
+  Encrypt: null
+  Name: null
+  Owner: null
+- AccessToString: null
+  Action: null
+  Encrypt: null
+  Name: null
+  Owner: null
+- AccessToString: null
+  Action: null
+  Encrypt: null
+  Name: null
+  Owner: null
+- AccessToString: null
+  Action: null
+  Encrypt: null
+  Name: null
+  Owner: null
+- AccessToString: null
+  Action: null
+  Encrypt: null
+  Name: null
+  Owner: null
+- AccessToString: null
+  Action: null
+  Encrypt: null
+  Name: null
+  Owner: null
+- AccessToString: null
+  Action: null
+  Encrypt: null
+  Name: null
+  Owner: null
+- AccessToString: null
+  Action: null
+  Encrypt: null
+  Name: null
+  Owner: null
+- AccessToString: null
+  Action: null
+  Encrypt: null
+  Name: null
+  Owner: null
+- AccessToString: null
+  Action: null
+  Encrypt: null
+  Name: null
+  Owner: null
+- AccessToString: null
+  Action: null
+  Encrypt: null
+  Name: null
+  Owner: null
+- AccessToString: null
+  Action: null
+  Encrypt: null
+  Name: null
+  Owner: null
+- AccessToString: null
+  Action: null
+  Encrypt: null
+  Name: null
+  Owner: null
+- AccessToString: null
+  Action: null
+  Encrypt: null
+  Name: null
+  Owner: null
+- AccessToString: null
+  Action: null
+  Encrypt: null
+  Name: null
+  Owner: null
