@@ -1,0 +1,12 @@
+
+
+- name: display data1
+  shell: echo {{ VAR_01 }}
+
+- name: display data2
+  shell: echo {{ VAR_out_of_scope }}
+
+- name: display data3
+  shell: echo {{ item.one }} && echo {{ item.one }}
+  loop: "{{ VAR_02 }}"
+
