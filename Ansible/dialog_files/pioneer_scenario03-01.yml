@@ -78,3 +78,4 @@ exec_list:
 # お約束
   - expect: '@'
     exec: exit
+
