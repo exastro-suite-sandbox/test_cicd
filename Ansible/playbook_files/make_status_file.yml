@@ -18,3 +18,5 @@
     src: "/tmp/MOVEMENT_STATUS_FILE"
     dest: "{{ __movement_status_filepath__ }}"
     flat: yes
+
+    
