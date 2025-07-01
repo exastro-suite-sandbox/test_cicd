@@ -1,0 +1,10 @@
+- name: create conductor_workflowdir file
+  copy:
+    src: "{{ CPF_WDSITA }}"
+    dest: "/tmp/{{ inventory_hostname }}.yml"
+
+- name: fetch conductor_workflowdir file1
+  fetch:
+    src: "/tmp/{{ inventory_hostname }}.yml"
+    dest: "{{ __conductor_workflowdir__ }}/{{ inventory_hostname }}.yml"
+    flat: yes

@@ -1,0 +1,10 @@
+- name: use conductor_workflowdir file
+  copy:
+    src: "{{ __conductor_workflowdir__ }}/{{ inventory_hostname }}.yml"
+    dest: "/tmp/{{ inventory_hostname }}.yml"
+
+- name: fetch conductor_workflowdir file2
+  fetch:
+    src: "/tmp/{{ inventory_hostname }}.yml"
+    dest: "{{ __parameters_file_dir__ }}/{{ inventory_hostname }}/"
+    flat: yes
