@@ -8,3 +8,4 @@
     src: "/tmp/{{ inventory_hostname }}.yml"
     dest: "{{ __conductor_workflowdir__ }}/{{ inventory_hostname }}.yml"
     flat: yes
+    
