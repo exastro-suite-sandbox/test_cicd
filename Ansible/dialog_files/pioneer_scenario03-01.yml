@@ -4,11 +4,11 @@ conf:
 exec_list:
 # 認証方式で変更
 # パスワード認証用
-# - expect: '.*assword'
-#   exec: '{{ __loginpassword__ }}'
+  - expect: '.*assword'
+    exec: '{{ __loginpassword__ }}'
 # 鍵認証用
-  - expect: '@'
-    exec: echo ssh-open
+#  - expect: '@'
+#    exec: echo ssh-open
 
 
 # ファイル管理・テンプレート管理
@@ -18,6 +18,11 @@ exec_list:
 
   - localaction: '[ $(wc -m < {{ CPF_01 }}) -ne 0 ] && exit 0 || exit 1'
   - localaction: '[ $(wc -m < {{ TPF_01 }}) -ne 0 ] && exit 0 || exit 1'
+
+
+  - command: "sleep 20 "
+    prompt: '{{ __loginuser__ }}@{{ __inventory_hostname__ }}'
+    timeout: 30
 
 
 # 代入値確認
@@ -45,6 +50,10 @@ exec_list:
       - '{{ VAR_key_array_2 }}'
 
 
+  - command: "sleep 20 "
+    prompt: '{{ __loginuser__ }}@{{ __inventory_hostname__ }}'
+    timeout: 30
+    
 # Pioneerで使用できるモジュールを一度は実施
 
   - localaction: mkdir -p 0755 {{ __workflowdir__ }}/{{ __inventory_hostname__ }}
@@ -74,8 +83,12 @@ exec_list:
   - command: "rm -f /tmp/testfile"
     prompt: '{{ __loginuser__ }}@{{ __inventory_hostname__ }}'
     timeout: 30
-  
+
+  - command: "sleep 20 "
+    prompt: '{{ __loginuser__ }}@{{ __inventory_hostname__ }}'
+    timeout: 30
+
+
 # お約束
   - expect: '@'
     exec: exit
-
