@@ -1,0 +1,20 @@
+- name: set_fact
+  set_fact:
+    randstatus: "{{ 3 | random }}"
+
+- name: run "movement_status_filepath"
+  command: echo "{{ __movement_status_filepath__ }}"
+  
+- name: write status
+  lineinfile:
+    create: yes
+    path: "/tmp/MOVEMENT_STATUS_FILE"
+    state: present
+    regexp : '^'
+    line : "{{ randstatus }}"
+
+- name: Copy the make yaml file to local
+  fetch:
+    src: "/tmp/MOVEMENT_STATUS_FILE"
+    dest: "{{ __movement_status_filepath__ }}"
+    flat: yes
