@@ -1,0 +1,55 @@
+- name: Create temporary build directory
+  ansible.windows.win_tempfile:
+    state: directory
+    suffix: build
+  register: temp_dir
+
+- name: run "echo VAR_001"
+  ansible.windows.win_command: powershell.exe -
+  args:
+    stdin: Write-Host {{ VAR_001 }}
+
+- name: run "echo VAR_002"
+  ansible.windows.win_command: powershell.exe -
+  args:
+    stdin: Write-Host {{ VAR_002 }}
+  
+- name: run "echo 002"
+  ansible.windows.win_command: powershell.exe -
+  args:
+    stdin: Write-Host {{ VAR_003 }}
+  
+- name: run "echo VAR_004"
+  ansible.windows.win_command: powershell.exe -
+  args:
+    stdin: Write-Host {{ VAR_004 }}
+
+- name: run "echo VAR_007"
+  ansible.windows.win_command: powershell.exe -
+  args:
+    stdin: Write-Host {{ VAR_007 }}
+
+- name: run "echo VAR_008"
+  ansible.windows.win_command: powershell.exe -
+  args:
+    stdin: Write-Host {{ VAR_008 }}
+  
+- name: run "echo VAR_009"
+  ansible.windows.win_command: powershell.exe -
+  args:
+    stdin: Write-Host {{ VAR_009 }}
+
+- name: Copy VAR_009
+  ansible.windows.win_copy:
+    src: "{{ VAR_009 }}"
+    dest: '{{ temp_dir.path }}\VAR_009.yml'
+    
+- name: run "echo VAR_010"
+  ansible.windows.win_command: powershell.exe -
+  args:
+    stdin: Write-Host {{ VAR_010 }}
+  
+- name: run "echo VAR_011"
+  ansible.windows.win_command: powershell.exe -
+  args:
+    stdin: Write-Host {{ VAR_011 }}
