@@ -1,0 +1,38 @@
+- name: Create temporary build directory
+  ansible.windows.win_tempfile:
+    state: directory
+    suffix: build
+  register: temp_dir
+
+- name: run "echo VAR_STR_1"
+  ansible.windows.win_command: powershell.exe -
+  args:
+    stdin: Write-Host {{ VAR_STR_1 }}
+
+- name: run "echo GBL_A"
+  ansible.windows.win_command: powershell.exe -
+  args:
+    stdin: Write-Host {{ GBL_A }}
+  
+- name: run "echo GBL_S"
+  ansible.windows.win_command: powershell.exe -
+  args:
+    stdin: Write-Host {{ GBL_S }}
+  
+- name: run "echo GBL_S_LB"
+  ansible.windows.win_command: powershell.exe -
+  args:
+    stdin: Write-Host {{ GBL_S_LB }}
+  
+- ansible.windows.win_template: src='{{ TPF_gbl }}' dest='{{ temp_dir.path }}\legacy_gbl.txt'
+
+- name: Copy CPF_WDSITA
+  ansible.windows.win_copy:
+    src: "{{ CPF_WDSITA }}"
+    dest: '{{ temp_dir.path }}\WIN_DirectorySetting_ITA.yml'
+
+- name: fetch WIN_DirectorySetting_ITA
+  fetch:
+    src: '{{ temp_dir.path }}\WIN_DirectorySetting_ITA.yml'
+    dest: "{{ __parameter_dir__ }}/{{ inventory_hostname }}/OS/WIN_DirectorySetting_ITA.yml"
+    flat: yes
