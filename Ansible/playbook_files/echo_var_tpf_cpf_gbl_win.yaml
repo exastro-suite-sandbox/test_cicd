@@ -22,7 +22,9 @@
 - name: run "echo GBL_S_LB"
   ansible.windows.win_command: powershell.exe -
   args:
-    stdin: Write-Host {{ GBL_S_LB }}
+    stdin: |
+      $content = '{{ GBL_S_LB | to_json }}' | ConvertFrom-Json;
+      Write-Host $content
   
 - ansible.windows.win_template: src='{{ TPF_gbl }}' dest='{{ temp_dir.path }}\legacy_gbl.txt'
 
@@ -35,4 +37,5 @@
   fetch:
     src: '{{ temp_dir.path }}\WIN_DirectorySetting_ITA.yml'
     dest: "{{ __parameter_dir__ }}/{{ inventory_hostname }}/OS/WIN_DirectorySetting_ITA.yml"
+
     flat: yes
