@@ -1,0 +1,25 @@
+conf:
+  timeout: 30
+  
+exec_list:
+# windows用
+# パスワード認証用
+  - expect: '.*assword'
+    exec: '{{ __loginpassword__ }}'
+
+# ファイル管理・テンプレート管理
+# 作業対象への転送は難しそうなので、一旦存在が確認できて中身が空っぽでなければよろし
+  - localaction: ls -al {{ CPF_01 }}
+  - localaction: ls -al {{ TPF_01 }}
+
+  - localaction: '[ $(wc -m < {{ CPF_01 }}) -ne 0 ] && exit 0 || exit 1'
+  - localaction: '[ $(wc -m < {{ TPF_01 }}) -ne 0 ] && exit 0 || exit 1'
+
+
+# 現時点で他のモジュールはWindowsの改行コードの兼ね合いで動作未検証
+  - expect: '>'
+    exec: "echo {{ VAR_01 }}\r"
+
+# お約束
+  - expect: '>'
+    exec: "exit\r"
