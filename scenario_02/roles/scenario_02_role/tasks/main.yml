@@ -10,3 +10,6 @@
   shell: echo {{ item.one }} && echo {{ item.one }}
   loop: "{{ VAR_02 }}"
 
+- name: display CPF_delivery_test
+  shell: cat {{ CPF_delivery_test | default ('/etc/hosts',true) }}
+  delegate_to: localhost
