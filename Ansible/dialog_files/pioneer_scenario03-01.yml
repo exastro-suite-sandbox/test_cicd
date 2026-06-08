@@ -4,11 +4,11 @@ conf:
 exec_list:
 # 認証方式で変更
 # パスワード認証用
-  - expect: '.*assword'
-    exec: '{{ __loginpassword__ }}'
+#  - expect: '.*assword'
+#    exec: '{{ __loginpassword__ }}'
 # 鍵認証用
-#  - expect: '@'
-#    exec: echo ssh-open
+  - expect: '@'
+    exec: echo ssh-open
 
 
 # ファイル管理・テンプレート管理
