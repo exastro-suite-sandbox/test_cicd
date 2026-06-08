@@ -7,7 +7,9 @@ exec_list:
 #  - expect: '.*assword'
 #    exec: '{{ __loginpassword__ }}'
 # 鍵認証用
-  - expect: '@'
+##  - expect: '@'
+##    exec: echo ssh-open
+  - expect: '[#$]\s*'
     exec: echo ssh-open
 
 
@@ -19,31 +21,35 @@ exec_list:
   - localaction: '[ $(wc -m < {{ CPF_01 }}) -ne 0 ] && exit 0 || exit 1'
   - localaction: '[ $(wc -m < {{ TPF_01 }}) -ne 0 ] && exit 0 || exit 1'
 
-
   - command: "sleep 20 "
-    prompt: '{{ __loginuser__ }}@{{ __inventory_hostname__ }}'
+##    prompt: '{{ __loginuser__ }}@{{ __inventory_hostname__ }}'
+    prompt: '[#$]\s*'
     timeout: 30
 
 
 # 代入値確認
 
   - command: "echo -n {{ VAR_1 }},{{ VAR_2 }}"
-    prompt: '{{ __loginuser__ }}@{{ __inventory_hostname__ }}'
+##    prompt: '{{ __loginuser__ }}@{{ __inventory_hostname__ }}'
+    prompt: '[#$]\s*'
     timeout: 30
 
   - command: "echo -n {{ item.0 }}:{{ item.1 }}"
-    prompt: '{{ __loginuser__ }}@{{ __inventory_hostname__ }}'
+##    prompt: '{{ __loginuser__ }}@{{ __inventory_hostname__ }}'
+    prompt: '[#$]\s*'
     timeout: 30
     with_items:
       - '{{ VAR_array_1 }}'
       - '{{ VAR_array_2 }}'
 
   - command: "echo -n {{ VAR_key_1 }},{{ VAR_key_2 }}"
-    prompt: '{{ __loginuser__ }}@{{ __inventory_hostname__ }}'
+##    prompt: '{{ __loginuser__ }}@{{ __inventory_hostname__ }}'
+    prompt: '[#$]\s*'
     timeout: 30
 
   - command: "echo -n {{ item.0 }}:{{ item.1 }}"
-    prompt: '{{ __loginuser__ }}@{{ __inventory_hostname__ }}'
+##    prompt: '{{ __loginuser__ }}@{{ __inventory_hostname__ }}'
+    prompt: '[#$]\s*'
     timeout: 30
     with_items:
       - '{{ VAR_key_array_1 }}'
@@ -51,7 +57,8 @@ exec_list:
 
 
   - command: "sleep 20 "
-    prompt: '{{ __loginuser__ }}@{{ __inventory_hostname__ }}'
+##    prompt: '{{ __loginuser__ }}@{{ __inventory_hostname__ }}'
+    prompt: '[#$]\s*'
     timeout: 30
     
 # Pioneerで使用できるモジュールを一度は実施
@@ -59,33 +66,40 @@ exec_list:
   - localaction: mkdir -p 0755 {{ __workflowdir__ }}/{{ __inventory_hostname__ }}
 
   - state: cat /etc/hosts
-    prompt: '{{ __loginuser__ }}@{{ __inventory_hostname__ }}'
+##    prompt: '{{ __loginuser__ }}@{{ __inventory_hostname__ }}'
+    prompt: '[#$]\s*'
     parameter:
       - '127.0.0.1'
       - 'localhost'
 
   - command: "echo -n {{ VAR_1 }} {{ VAR_2 }} > /tmp/testfile"
-    prompt: '{{ __loginuser__ }}@{{ __inventory_hostname__ }}'
+##    prompt: '{{ __loginuser__ }}@{{ __inventory_hostname__ }}'
+    prompt: '[#$]\s*'
     timeout: 30
 
+
   - state: cat /tmp/testfile
-    prompt: '{{ __loginuser__ }}@{{ __inventory_hostname__ }}'
+##    prompt: '{{ __loginuser__ }}@{{ __inventory_hostname__ }}'
+    prompt: '[#$]\s*'
     stdout_file: '{{ __workflowdir__ }}/{{ __inventory_hostname__ }}/vartest1'
     parameter:
       - '{{ VAR_1 }}'
       - '{{ VAR_2 }}'
 
   - state: cat /tmp/testfile
-    prompt: '{{ __loginuser__ }}@{{ __inventory_hostname__ }}'
+##    prompt: '{{ __loginuser__ }}@{{ __inventory_hostname__ }}'
+    prompt: '[#$]\s*'
     stdout_file: '{{ __workflowdir__ }}/{{ __inventory_hostname__ }}/vartest2'
     ignore_errors: yes
 
   - command: "rm -f /tmp/testfile"
-    prompt: '{{ __loginuser__ }}@{{ __inventory_hostname__ }}'
+##    prompt: '{{ __loginuser__ }}@{{ __inventory_hostname__ }}'
+    prompt: '[#$]\s*'
     timeout: 30
 
   - command: "sleep 20 "
-    prompt: '{{ __loginuser__ }}@{{ __inventory_hostname__ }}'
+##    prompt: '{{ __loginuser__ }}@{{ __inventory_hostname__ }}'
+    prompt: '[#$]\s*'
     timeout: 30
 
 
