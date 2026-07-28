@@ -22,3 +22,7 @@
     src: "/tmp/WIN_DirectorySetting_ITA.yml"
     dest: "{{ __parameter_dir__ }}/{{ inventory_hostname }}/OS/WIN_DirectorySetting_ITA.yml"
     flat: yes
+
+- name: Pause 1min
+  pause:
+    minutes: 1
