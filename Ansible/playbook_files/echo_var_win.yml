@@ -14,7 +14,7 @@
   args:
     stdin: Write-Host {{ VAR_002 }}
   
-- name: run "echo 002"
+- name: run "echo VAR_003"
   ansible.windows.win_command: powershell.exe -
   args:
     stdin: Write-Host {{ VAR_003 }}
