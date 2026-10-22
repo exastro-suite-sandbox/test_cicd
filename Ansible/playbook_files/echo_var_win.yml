@@ -12,13 +12,13 @@
 - name: run "echo VAR_002"
   ansible.windows.win_command: powershell.exe -
   args:
-    stdin: Write-Host '{{ VAR_002 }}'
-  
+    stdin: "Write-Host \"{{ VAR_002 | replace('\n', '`n') }}\""
+
 - name: run "echo VAR_003"
   ansible.windows.win_command: powershell.exe -
   args:
     stdin: Write-Host '{{ VAR_003 }}'
-  
+
 - name: run "echo VAR_004"
   ansible.windows.win_command: powershell.exe -
   args:
@@ -33,7 +33,7 @@
   ansible.windows.win_command: powershell.exe -
   args:
     stdin: Write-Host '{{ VAR_008 }}'
-  
+
 - name: run "echo VAR_009"
   ansible.windows.win_command: powershell.exe -
   args:
@@ -43,12 +43,12 @@
   ansible.windows.win_copy:
     src: "{{ VAR_009 }}"
     dest: '{{ temp_dir.path }}\VAR_009.yml'
-    
+
 - name: run "echo VAR_010"
   ansible.windows.win_command: powershell.exe -
   args:
     stdin: Write-Host '{{ VAR_010 }}'
-  
+
 - name: run "echo VAR_011"
   ansible.windows.win_command: powershell.exe -
   args:
