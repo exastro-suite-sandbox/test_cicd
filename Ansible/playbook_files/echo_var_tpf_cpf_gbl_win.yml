@@ -28,6 +28,20 @@
   
 - ansible.windows.win_template: src='{{ TPF_gbl }}' dest='{{ temp_dir.path }}\legacy_gbl.txt'
 
+- name: make Ansible_conf.yml
+  ansible.windows.win_copy:
+    content: |
+      ansible_architecture: {{ inventory_hostname }}_{{ ansible_date_time.epoch }}
+      item3_value: {{ (ansible_date_time.epoch | int) + (inventory_hostname | hash('md5') | int(base=16) % 100000) }}
+      item4_value: {{ ((ansible_date_time.epoch | int) + (inventory_hostname | hash('md5') | int(base=16) % 100000)) / 1000 }}
+    dest: '{{ temp_dir.path }}\Ansible_conf.yml'
+
+- name: fetch Ansible_conf.yml
+  fetch:
+    src: '{{ temp_dir.path }}\Ansible_conf.yml'
+    dest: "{{ __parameter_dir__ }}/{{ inventory_hostname }}/Ansible_conf.yml"
+    flat: yes
+
 - name: Copy CPF_WDSITA
   ansible.windows.win_copy:
     src: "{{ CPF_WDSITA }}"
@@ -37,5 +51,4 @@
   fetch:
     src: '{{ temp_dir.path }}\WIN_DirectorySetting_ITA.yml'
     dest: "{{ __parameter_dir__ }}/{{ inventory_hostname }}/OS/WIN_DirectorySetting_ITA.yml"
-
     flat: yes
