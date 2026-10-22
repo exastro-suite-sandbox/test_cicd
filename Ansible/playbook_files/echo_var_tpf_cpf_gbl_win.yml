@@ -7,17 +7,17 @@
 - name: run "echo VAR_STR_1"
   ansible.windows.win_command: powershell.exe -
   args:
-    stdin: Write-Host {{ VAR_STR_1 }}
+    stdin: Write-Host '{{ VAR_STR_1 }}'
 
 - name: run "echo GBL_A"
   ansible.windows.win_command: powershell.exe -
   args:
-    stdin: Write-Host {{ GBL_A }}
+    stdin: Write-Host '{{ GBL_A }}'
   
 - name: run "echo GBL_S"
   ansible.windows.win_command: powershell.exe -
   args:
-    stdin: Write-Host {{ GBL_S }}
+    stdin: Write-Host '{{ GBL_S }}'
   
 - name: run "echo GBL_S_LB"
   ansible.windows.win_command: powershell.exe -
