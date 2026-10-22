@@ -1,6 +1,4 @@
 echo_tpf.yml
-{{ __loginpassword__ }}
 {{ VAR_01 }}
 {{ GBL_A }}
 {{ GBL_S }}
-
