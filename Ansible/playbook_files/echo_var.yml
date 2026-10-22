@@ -4,7 +4,7 @@
 - name: run "echo VAR_002"
   command: echo {{ VAR_002 }}
   
-- name: run "echo 002"
+- name: run "echo VAR_003"
   command: echo {{ VAR_003 }}
   
 - name: run "echo VAR_004"
