@@ -13,19 +13,19 @@
   ansible.windows.win_command: powershell.exe -
   args:
     stdin: Write-Host '{{ GBL_A }}'
-  
+
 - name: run "echo GBL_S"
   ansible.windows.win_command: powershell.exe -
   args:
     stdin: Write-Host '{{ GBL_S }}'
-  
+
 - name: run "echo GBL_S_LB"
   ansible.windows.win_command: powershell.exe -
   args:
     stdin: |
       $content = '{{ GBL_S_LB | to_json }}' | ConvertFrom-Json;
       Write-Host $content
-  
+
 - ansible.windows.win_template: src='{{ TPF_gbl }}' dest='{{ temp_dir.path }}\legacy_gbl.txt'
 
 - name: make Ansible_conf.yml
