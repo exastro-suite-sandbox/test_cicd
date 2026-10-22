@@ -7,7 +7,7 @@
 - name: run "echo VAR_STR_1"
   ansible.windows.win_command: powershell.exe -
   args:
-    stdin: Write-Host '{{ VAR_STR_1 }}'
+    stdin: "Write-Host \"{{ VAR_STR_1 | replace('\n', '`n') }}\""
 
 - name: run "echo GBL_A"
   ansible.windows.win_command: powershell.exe -
