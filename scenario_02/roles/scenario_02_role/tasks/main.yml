@@ -7,7 +7,7 @@
   shell: echo {{ VAR_out_of_scope }}
 
 - name: display data3
-  shell: echo {{ item.one }} && echo {{ item.one }}
+  shell: 'echo "{{ item.one }}" && echo "{{ item.one }}"'
   loop: "{{ VAR_02 }}"
 
 - name: display CPF_delivery_test
