@@ -1,5 +1,3 @@
-
-
 - name: display data1
   shell: echo {{ VAR_01 }}
 
